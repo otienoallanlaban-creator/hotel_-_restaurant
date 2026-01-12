@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laban Grand Machakos | Premium Kenyan Hospitality</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* BRANDING PALETTE:
+           Blue: #001F3F (Navy Professional)
+           Black: #050505 (Luxury Black)
+           Yellow: #FFD700 (Vibrant Heritage Gold)
+        */
+
+        :root {
+            --navy: #001f3f;
+            --black: #050505;
+            --yellow: #ffd700;
+            --yellow-hover: #e6c200;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.1);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- GLOBAL BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 2000;
+            padding: 1.5rem 0;
+            transition: var(--transition);
+        }
+
+        nav.active {
+            background: var(--navy);
+            padding: 1rem 0;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--yellow);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--yellow);
+        }
+
+        .btn-booking {
+            background: var(--yellow);
+            color: var(--black);
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-booking:hover {
+            background: var(--white);
+            transform: scale(1.05);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 31, 63, 0.7), rgba(5, 5, 5, 0.8)),
+                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .hero-content h1 span {
+            color: var(--yellow);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            color: var(--yellow);
+        }
+
+        /* --- BOOKING SYSTEM BAR --- */
+        .booking-bar {
+            background: var(--navy);
+            width: 90%;
+            max-width: 1200px;
+            margin: -60px auto 0;
+            position: relative;
+            z-index: 100;
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            border-bottom: 5px solid var(--yellow);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--yellow);
+            margin-bottom: 8px;
+        }
+
+        .input-group select, .input-group input {
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: var(--white);
+            outline: none;
+        }
+
+        .price-engine {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-left: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .price-engine .total-label { font-size: 0.6rem; text-transform: uppercase; }
+        .price-engine .amount { font-size: 1.8rem; font-weight: 800; color: var(--yellow); }
+
+        /* --- SECTION DECOR --- */
+        .section-header {
+            text-align: center;
+            padding: 100px 0 60px;
+        }
+
+        .section-header h2 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        .section-header .line {
+            width: 80px;
+            height: 4px;
+            background: var(--yellow);
+            margin: 0 auto;
+        }
+
+        /* --- RESTAURANT & BAR MODULE --- */
+        .dining-section {
+            background: var(--navy);
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .dining-info {
+            flex: 1;
+            min-width: 400px;
+            padding: 80px 5%;
+        }
+
+        .dining-visual {
+            flex: 1;
+            min-width: 400px;
+            min-height: 500px;
+            background: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .menu-grid {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .menu-item {
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            padding-bottom: 15px;
+        }
+
+        .menu-item h4 {
+            color: var(--yellow);
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .menu-item p {
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+
+        /* --- ROOMS --- */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding-bottom: 100px;
+        }
+
+        .room-card {
+            background: #111;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #222;
+        }
+
+        .room-image {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            transition: var(--transition);
+        }
+
+        .room-card:hover .room-image {
+            transform: scale(1.1);
+        }
+
+        .room-content {
+            padding: 30px;
+            background: linear-gradient(to top, var(--black), transparent);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .room-tag {
+            background: var(--yellow);
+            color: var(--black);
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* --- FACILITIES (PARKING & SECURITY) --- */
+        .facility-strip {
+            padding: 80px 0;
+            background: var(--black);
+        }
+
+        .facility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .facility-card {
+            text-align: center;
+            padding: 40px;
+            background: var(--navy);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .facility-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px var(--yellow);
+        }
+
+        .facility-card i {
+            font-size: 3rem;
+            color: var(--yellow);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* --- CONTACT & FOOTER --- */
+        footer {
+            padding: 100px 0 50px;
+            background: #020a13;
+            border-top: 1px solid #111;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .footer-col h4 {
+            color: var(--yellow);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-col ul li {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul li a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .footer-col ul li a:hover { color: var(--yellow); }
+
+        .newsletter input {
+            padding: 12px;
+            width: 100%;
+            background: #111;
+            border: 1px solid #333;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 50px;
+            border-top: 1px solid #111;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .footer-main { grid-template-columns: 1fr 1fr; }
+            .dining-visual { min-height: 300px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 3.5rem; }
+            .booking-bar { grid-template-columns: 1fr; margin-top: 0; width: 95%; }
+            .menu-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container">
+            <a href="#" class="logo">Laban Grand</a>
+            <div class="nav-links">
+                <a href="#rooms">Suites</a>
+                <a href="#dining">Dining</a>
+                <a href="#bar">Bar</a>
+                <a href="#facilities">Parking</a>
+                <button class="btn-booking" onclick="document.getElementById('rooms').scrollIntoView()">Book Stay</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p>Authentic Machakos Heritage</p>
+            <h1>Laban <span>Grand</span> Resort</h1>
+            <div class="serif" style="font-size: 1.5rem; color: #fff;">Luxury. Security. Gastronomy.</div>
+        </div>
+    </section>
+
+    <div class="booking-bar">
+        <div class="input-group">
+            <label>The Sanctuary</label>
+            <select id="roomType" onchange="calculateStay()">
+                <option value="8500">Deluxe Garden View — KSH 8,500</option>
+                <option value="15000">Executive Hill View — KSH 15,000</option>
+                <option value="28000">Heritage Royal Suite — KSH 28,000</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>Arrival Date</label>
+            <input type="date" id="checkin">
+        </div>
+        <div class="input-group">
+            <label>Nights</label>
+            <input type="number" id="nights" value="1" min="1" oninput="calculateStay()">
+        </div>
+        <div class="price-engine">
+            <span class="total-label">Estimated Total</span>
+            <span class="amount" id="totalDisplay">KSH 8,500</span>
+        </div>
+        <button class="btn-booking" onclick="confirmReservation()" style="height: 50px; margin-top: 10px;">Reserve Now</button>
+    </div>
+
+    <section class="container" id="rooms">
+        <div class="section-header">
+            <p style="color: var(--yellow); font-weight: 700;">PRIVATE RETREATS</p>
+            <h2>World-Class Suites</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="rooms-grid">
+            <div class="room-card">
+                <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1974&auto=format&fit=crop');"></div>
+                <div class="room-content">
+                    <span class="room-tag">MOST POPULAR</span>
+                    <h3 class="serif" style="font-size: 1.8rem;">Deluxe Garden View</h3>
+                    <p>Peaceful views of the Machakos landscape with premium bedding.</p>
+                    <p style="color: var(--yellow); font-weight: 700; margin-top: 10px;">KSH 8,500 / Night</p>
+                </div>
+            </div>
+            <div class="room-card">
+                <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop');"></div>
+                <div class="room-content">
+                    <span class="room-tag">EXECUTIVE</span>
+                    <h3 class="serif" style="font-size: 1.8rem;">Iveti Hill Executive</h3>
+                    <p>High-altitude luxury with a private balcony and office space.</p>
+                    <p style="color: var(--yellow); font-weight: 700; margin-top: 10px;">KSH 15,000 / Night</p>
+                </div>
+            </div>
+            <div class="room-card">
+                <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1974&auto=format&fit=crop');"></div>
+                <div class="room-content">
+                    <span class="room-tag">PREMIUM</span>
+                    <h3 class="serif" style="font-size: 1.8rem;">Heritage Royal Suite</h3>
+                    <p>The ultimate Kamba hospitality experience. Two-bedroom master suite.</p>
+                    <p style="color: var(--yellow); font-weight: 700; margin-top: 10px;">KSH 28,000 / Night</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dining" class="dining-section">
+        <div class="dining-info">
+            <h2 class="serif" style="font-size: 3rem; color: var(--yellow);">The Grand Kitchen</h2>
+            <p>From the heart of Machakos, our chefs bring you a fusion of traditional Akamba delicacies and international fine dining.</p>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h4><span>Traditional Muthokoi</span> <span>KSH 1,200</span></h4>
+                    <p>Slow-cooked cracked maize with pigeon peas and tender beef.</p>
+                </div>
+                <div class="menu-item">
+                    <h4><span>Kilungu Lamb Chops</span> <span>KSH 2,400</span></h4>
+                    <p>Grilled with wild rosemary and served with garlic mash.</p>
+                </div>
+                <div class="menu-item">
+                    <h4><span>Tilapia (Lake Side)</span> <span>KSH 1,850</span></h4>
+                    <p>Deep-fried or wet fry with ugali and traditional greens.</p>
+                </div>
+                <div class="menu-item">
+                    <h4><span>Goat Ribs (Mbuzi)</span> <span>KSH 2,100</span></h4>
+                    <p>Open flame roasted, served with kachumbari.</p>
+                </div>
+            </div>
+        </div>
+        <div class="dining-visual"></div>
+    </section>
+
+    <section id="bar" class="dining-section" style="flex-direction: row-reverse; background: var(--black);">
+        <div class="dining-info" style="background: var(--navy);">
+            <h2 class="serif" style="font-size: 3rem; color: var(--yellow);">Skyline Bar & Lounge</h2>
+            <p>The premier spot for sundowners in Eastern Kenya. Enjoy artisan cocktails and the finest Kenyan craft beers.</p>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h4><span>Laban Gold Cocktail</span> <span>KSH 950</span></h4>
+                    <p>Signature blend of spiced rum, mango nectar, and lime.</p>
+                </div>
+                <div class="menu-item">
+                    <h4><span>Kenyan Craft Beers</span> <span>KSH 550</span></h4>
+                    <p>Assorted local brews from 254 Brewing and EABL.</p>
+                </div>
+                <div class="menu-item">
+                    <h4><span>Single Malt Selection</span> <span>KSH 1,200</span></h4>
+                    <p>Premium aged Scotch served with clear ice spheres.</p>
+                </div>
+                <div class="menu-item">
+                    <h4><span>Fresh Machakos Juice</span> <span>KSH 400</span></h4>
+                    <p>Freshly squeezed tropical fruits from local farms.</p>
+                </div>
+            </div>
+            <br>
+            <button class="btn-booking">View Full Drink List</button>
+        </div>
+        <div class="dining-visual" style="background-image: url('https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=1974&auto=format&fit=crop');"></div>
+    </section>
+
+    <section class="facility-strip" id="facilities">
+        <div class="container">
+            <div class="section-header">
+                <p style="color: var(--yellow); font-weight: 700;">GUEST PEACE OF MIND</p>
+                <h2>World-Class Facilities</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="facility-grid">
+                <div class="facility-card">
+                    <i>🅿️</i>
+                    <h3 class="serif">Secure Parking</h3>
+                    <p>Expansive, well-lit, and 24-hour guarded on-site parking for all guests and delegates.</p>
+                </div>
+                <div class="facility-card">
+                    <i>🛡️</i>
+                    <h3 class="serif">Elite Security</h3>
+                    <p>Professional rapid-response security team and CCTV surveillance covering the entire estate.</p>
+                </div>
+                <div class="facility-card">
+                    <i>📶</i>
+                    <h3 class="serif">High-Speed WiFi</h3>
+                    <p>Uninterrupted fiber-optic internet available in all suites and public lounges.</p>
+                </div>
+                <div class="facility-card">
+                    <i>🏊</i>
+                    <h3 class="serif">Heated Pool</h3>
+                    <p>Infinity pool with a breathtaking view of the Seven Hills of Machakos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-col">
+                    <div class="logo">Laban Grand</div>
+                    <p style="color: #666; margin-top: 20px;">The definitive choice for luxury accommodation, conferencing, and fine dining in Machakos County. Experience heritage, redefined.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#rooms">Our Suites</a></li>
+                        <li><a href="#dining">Restaurant</a></li>
+                        <li><a href="#bar">Sky Lounge</a></li>
+                        <li><a href="#facilities">Parking & Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>+254 742424458</li>
+                        <li>otienoallanlaban@student.mksu.ac.ke</li>
+                        <li>Machakos-Wote Road</li>
+                        <li>Machakos, Kenya</li>
+                    </ul>
+                </div>
+                <div class="footer-col newsletter">
+                    <h4>Stay Updated</h4>
+                    <p style="font-size: 0.8rem; margin-bottom: 15px;">Subscribe for exclusive heritage offers.</p>
+                    <input type="email" placeholder="Your Email Address">
+                    <button class="btn-booking" style="width: 100%;">Join the Legacy</button>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Laban Grand Machakos. All Rights Reserved. | <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Navigation State Change
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                nav.classList.add('active');
+            } else {
+                nav.classList.remove('active');
+            }
+        });
+
+        // 2. Price Calculation Engine
+        function calculateStay() {
+            const roomPrice = parseInt(document.getElementById('roomType').value);
+            const nights = parseInt(document.getElementById('nights').value) || 1;
+            const total = roomPrice * nights;
+            
+            const display = document.getElementById('totalDisplay');
+            
+            // Simple visual transition
+            display.style.opacity = '0';
+            setTimeout(() => {
+                display.innerText = "KSH " + total.toLocaleString();
+                display.style.opacity = '1';
+            }, 150);
+        }
+
+        // 3. Booking Confirmation Logic
+        function confirmReservation() {
+            const type = document.getElementById('roomType').options[document.getElementById('roomType').selectedIndex].text;
+            const price = document.getElementById('totalDisplay').innerText;
+            const checkin = document.getElementById('checkin').value;
+
+            if(!checkin) {
+                alert("Please select your check-in date.");
+                return;
+            }
+
+            alert(`
+                RESERVATION RECEIVED
+                -----------------------------
+                Sanctuary: ${type}
+                Total Quote: ${price}
+                Arrival: ${checkin}
+                Parking Status: RESERVED (Secured)
+                
+                Our Cultural Concierge will call you shortly to finalize your stay.
+            `);
+        }
+
+        // 4. Default Date (Set to Today)
+        document.getElementById('checkin').valueAsDate = new Date();
+
+        // 5. Scroll Animations (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.room-card, .facility-card, .menu-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
